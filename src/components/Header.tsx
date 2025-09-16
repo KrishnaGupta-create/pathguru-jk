@@ -3,9 +3,12 @@ import { Badge } from "@/components/ui/badge";
 import { Brain, Menu, User, Bell } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageToggle from "./LanguageToggle";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card/80 backdrop-blur-md">
@@ -31,22 +34,27 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={() => navigate("/assessment")}
-          >
-            Assessment
+          <Button variant="ghost" size="sm" onClick={() => navigate("/dashboard")}>
+            {t('dashboard')}
           </Button>
-          <Button variant="ghost" size="sm">Colleges</Button>
-          <Button variant="ghost" size="sm">Careers</Button>
-          <Button variant="ghost" size="sm">Resources</Button>
-          <Button variant="ghost" size="sm">Timeline</Button>
+          <Button variant="ghost" size="sm" onClick={() => navigate("/colleges")}>
+            {t('colleges')}
+          </Button>
+          <Button variant="ghost" size="sm" onClick={() => navigate("/career-paths")}>
+            {t('careers')}
+          </Button>
+          <Button variant="ghost" size="sm" onClick={() => navigate("/ngos")}>
+            {t('ngos')}
+          </Button>
+          <Button variant="ghost" size="sm" onClick={() => navigate("/resources")}>
+            {t('resources')}
+          </Button>
         </nav>
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center space-x-3">
-          <Button variant="ghost" size="sm">
+          <LanguageToggle />
+          <Button variant="ghost" size="sm" onClick={() => navigate("/timeline")}>
             <Bell className="h-4 w-4" />
           </Button>
           <Button variant="ghost" size="sm">
@@ -57,7 +65,7 @@ const Header = () => {
             className="bg-gradient-accent hover:opacity-90"
             onClick={() => navigate("/assessment")}
           >
-            Get Started
+            {t('getStarted')}
           </Button>
         </div>
 
