@@ -13,7 +13,7 @@ const LanguageToggle = () => {
 
   const languages = [
     { code: 'en' as const, name: 'English', flag: '🇺🇸' },
-    { code: 'ur' as const, name: 'اردو', flag: '🇵🇰' },
+    { code: 'ur' as const, name: 'اردو', flag: '🌐' },
     { code: 'hi' as const, name: 'हिंदी', flag: '🇮🇳' }
   ];
 
